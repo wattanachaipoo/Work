@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Plotfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="../pic/boy.png" class="logo">
+
+            <div class="navbar">
+                <a href="../index.html">Home</a>
+                <a href="../About/index.html">About</a>
+                <a href="../Performance/index.html">Performance</a>
+                <a href="../ContactME/index.html">ContactME</a>
+                <a href="./index.html">JAVA</a>
+                <a href="../api/index.html">API</a>
+            </div>
+        </header>
+
+        <!-- งาน -->
+        <div class="work">
+
+          <h1>The Document Object</h1>
+          <h2>The get ElementById() Method</h2>
+          <br />
+          <hr />
+          <br />
+          <p id="demo">All characters are printed!</p>
+          <br />
+          <hr />
+          <p id="demo3">ชื่ออ</p>
+          <button onclick="onComplete()">เช็คชื่อ</button>
+          <hr>
+          <br />
+          <p id="demo2">สุ่มเลขลูกเต๋า</p>
+          <button onclick="Random()">สุ่มเลขลูกเต๋า</button>
+          <br />
+          <hr />
+          <br />
+          <button onclick="Factorial()">Factorial</button>
+        </div>
+        <br />
+        <hr />
+        <br />
+        <button onclick="fahrenheit()">เช็คอุณหภูมิกัน</button>
+        <!-- End page content -->
+      </div>
+      <!-- Footer -->
+
+      <script>
+        function printAlphabetWithDelay(callback) {
+          let currentCharCode = 65; // ASCII code for 'A'
+          function printNextChar() {
+            const char = String.fromCharCode(currentCharCode);
+            document.getElementById("demo").innerHTML = char;
+            currentCharCode++;
+            if (currentCharCode <= 90) {
+              setTimeout(printNextChar, 1000);
+            } else {
+              callback();
+            }
+          }
+          printNextChar();
+        }
+        function onComplete() {
+          document.getElementById("demo3").innerHTML =
+            " นาย วัฒนชัย ชุมพล มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน วิทยาเขตขอนแก่น";
+        }
+        printAlphabetWithDelay(onComplete);
+
+        function Random() {
+          function random() {
+            const เลขลูกเต๋า = Math.floor(Math.random() * 6) + 1;
+            return เลขลูกเต๋า;
+          }
+          
+          const randomdice = random();
+          document.getElementById("demo2").innerHTML = randomdice;
+        }
+
+        function Factorial() {
+          function factorial(n) {
+            if (n === 0 || n === 1) {
+              return 1;
+            } else {
+              return n * factorial(n - 1);
+            }
+          }
+          const inputNumber = prompt('ป้อนตัวเลขที่ต้องการคำนวณ factorial:');
+          const num = parseInt(inputNumber);
+          
+          if (!isNaN(num) && num >= 0) {
+            const result = factorial(num);
+            alert(`ค่า factorial ของ ${num} คือ ${result}`);
+          } else {
+            alert('กรุณาป้อนตัวเลข!!');
+          }
+        }
+
+        function fahrenheit() {
+          function fahrenheitToCelsius(fahrenheit) {
+            const celsius = (fahrenheit - 32) * (5 / 9);
+            return celsius;
+          }
+          
+          const fahrenheitInput = prompt('ป้อนอุณหภูมิในหน่วย Fahrenheit:');
+          const fahrenheitValue = parseFloat(fahrenheitInput);
+          
+          if (!isNaN(fahrenheitValue)) {
+            const celsiusValue = fahrenheitToCelsius(fahrenheitValue);
+            alert(`${fahrenheitValue} องศา Fahrenheit เท่ากับ ${celsiusValue.toFixed(2)} องศา Celsius`);
+          } else {
+            alert('ป้อนค่าอุณหภูมิใหม่');
+          }
+        }
+      </script>
+</body>
+
+</html>
